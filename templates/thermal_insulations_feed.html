@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="frame">
-        <video autoplay loop muted playsinline style="width: 440px; height: 978px; left: 0; top: -22px; position: absolute"><source src="{{insulator.video_url}}" type="video/mp4"></video>
+        <video autoplay loop muted playsinline style="width: 440px; height: 978px; left: 0; top: -22px; position: absolute"><source src="{% if insulator.video_url == "" %} http://localhost:9000/media/1.mp4 {% else %} {{insulator.video_url}} {% endif %}" type="video/mp4"></video>
         <div class="background"></div>
         <div class="bottom_line"></div>
 
@@ -21,8 +21,8 @@
         <img class="size_30" style="left: 353px; top: 869px" src="https://cdn-icons-png.flaticon.com/512/5880/5880909.png"  alt="Плитка">
         <div class="button_text text_list">Плитка</div>
 
-        <img class="size_50" style="left: 359px; top: 610px" src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png"  alt="Лайк">
-        <div class="side_text likes">{{liked}}</div>
+        <img class="size_50" style="left: 359px; top: 610px; {% if liked %}filter: invert(1);{% endif %}" src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png"  alt="Лайк">
+        <div class="side_text likes">{{likes}}</div>
         <img class="size_50" style="left: 359px; top: 525px" src="https://cdn-icons-png.flaticon.com/512/3815/3815398.png"  alt="Коэффициент">
         <div class="side_text coefficient">{{insulator.coefficient}} мВт/(м·°C)</div>
         <img class="size_50" style="left: 359px; top: 440px" src="https://cdn-icons-png.flaticon.com/512/1611/1611179.png"  alt="Цена">

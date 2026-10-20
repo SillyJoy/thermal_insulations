@@ -24,21 +24,32 @@
     <img style="width: 94px; height: 94px; left: 43px; top: 45px; position: absolute" src="https://cdn-icons-png.flaticon.com/512/9053/9053986.png" alt="">
     <img style="width: 80px; height: 80px; left: 50px; top: 160px; position: absolute" src="https://cdn-icons-png.flaticon.com/512/8572/8572505.png" alt="">
 
-    <form>
+    {% if publish %}
+    <form action="/insulation/add/" method="POST">
+    {% else %}
+    <form action="/insulation/{{ draft.id }}/publish" method="POST">
+    {% endif %}
     <div class="big_button_text" style="top: 187px">Загрузить видео</div>
     <div class="big_button_text" style="top: 80px">Загрузить фото</div>
 
     <div class="label" style="left: 30px; top: 271px">Описание</div>
-    <input class="input_field" style="width: 405px; height: 147px; left: 18px; top: 306px" type="text" placeholder="Укажите описание...">
+    <input name="descr" class="input_field" style="width: 405px; height: 147px; left: 18px; top: 306px" type="text" placeholder="Укажите описание..." value="{{ draft.description }}">
 
     <div class="label" style="left: 30px; top: 475px">Коэффициент теплопроводности</div>
-    <input class="input_field" style="width: 405px; height: 48px; left: 18px; top: 510px" type="text" placeholder="Укажите коэффициент теплопроводности...">
+    <input name="coef" class="input_field" style="width: 405px; height: 48px; left: 18px; top: 510px" type="text" placeholder="Укажите коэффициент теплопроводности..." value="{{ draft.coefficient }}">
 
     <div class="label" style="left: 30px; top: 580px">Стоимость</div>
-    <input class="input_field" style="width: 405px; height: 48px; left: 18px; top: 615px" type="text" placeholder="Укажите стоимость...">
+    <input name="price" class="input_field" style="width: 405px; height: 48px; left: 18px; top: 615px" type="text" placeholder="Укажите стоимость..." value="{{ draft.price }}">
 
-    <button type="button" class="create_button"></button>
+    <div class="label" style="left: 30px; top: 680px">Название</div>
+    <input name="title" class="input_field" style="width: 405px; height: 48px; left: 18px; top: 715px" type="text" placeholder="Укажите название..." value="{{ draft.title }}">
+
+    <button type="submit" class="create_button"></button>
+    {% if publish %}
     <div class="create_button_text">Добавить</div>
+    {% else %}
+    <div class="create_button_text">Опубликовать</div>
+    {% endif %}
     </form>
 </body>
 </html>

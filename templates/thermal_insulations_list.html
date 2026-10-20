@@ -21,7 +21,7 @@
 
     <div class="label" style="left: 29px; top: 54px">Поиск по цене</div>
     <div style="left: 20px; top: 137px; position: absolute; color: #9AA5B3; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">500</div>
-    <div style="left: 340px; top: 137px; position: absolute; color: #9AA5B3; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">3000</div>
+    <div style="left: 340px; top: 137px; position: absolute; color: #9AA5B3; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">5000</div>
     <form id="form" method="GET" action="list_thermal_insulations">
         <input type="range" min="500" max="5000" value="{{low}}" class="slider" id="lower" name="lower">
         <input type="range" min="500" max="5000" value="{{high}}" class="slider" id="higher" name="higher">
@@ -33,9 +33,12 @@
         {% for i in db %}
         <div class="card">
             <div class="card_title">{{ i.title }}</div>
-            <img class="card_image" src="{{ i.image_url }}"  alt="">
+            <img class="card_image" src="{% if i.image_url == "" %} https://placehold.co/158x123 {% else %} {{ i.image_url }} {% endif %}"  alt="">
             <div class="card_text" style="top: 193px">Коэффициент: {{ i.coefficient }} мВт/м°C</div>
             <div class="card_text" style="top: 215px">Цена: {{ i.price }} руб.</div>
+            <form action="/insulation/{{ i.id }}/delete/" method="POST">
+                <button style="padding: 0; border: 0;" type="submit"><img style="width: 30px; height: 30px; left: 150px; top: 150px; position: absolute; filter: invert(1); cursor: pointer;" src="https://cdn-icons-png.flaticon.com/512/3976/3976956.png"></button>
+            </form>
         </div>
         {% endfor %}
     </div>
