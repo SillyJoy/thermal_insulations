@@ -13,4 +13,4 @@ class Insulation(Base):
     image_url = Column(String(255), nullable=False)
     video_url = Column(String(255), nullable=False)
     status = Column(Integer, default=2)
-    user_id = Column(Integer, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)

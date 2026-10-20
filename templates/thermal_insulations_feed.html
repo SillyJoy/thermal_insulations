@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="frame">
-        <video autoplay loop muted playsinline style="width: 440px; height: 978px; left: 0; top: -22px; position: absolute"><source src="{% if insulator.video_url == "" %} http://localhost:9000/media/1.mp4 {% else %} {{insulator.video_url}} {% endif %}" type="video/mp4"></video>
+        <video autoplay loop muted playsinline style="width: 440px; height: 978px; left: 0; top: -22px; position: absolute"><source src="{% if insulator.video_url == "" %} http://localhost:9000/media/1.mp4 {% else %} {{ insulator.video_url }} {% endif %}" type="video/mp4"></video>
         <div class="background"></div>
         <div class="bottom_line"></div>
 
