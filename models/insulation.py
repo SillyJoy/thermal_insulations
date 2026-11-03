@@ -2,6 +2,10 @@ from datetime import UTC, datetime
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from db.base import Base
 
+STATUS_DRAFT = 2
+STATUS_PUBLISHED = 1
+STATUS_DELETED = 0
+
 
 def utc_now() -> datetime:
     return datetime.now(UTC).replace(tzinfo=None)
