@@ -3,7 +3,7 @@ from db.base import Base
 
 
 class Insulation(Base):
-    __tablename__ = "insulations"
+    __tablename__ = "thermal_insulations"
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(100), nullable=False)
@@ -14,3 +14,7 @@ class Insulation(Base):
     video_url = Column(String(255), nullable=False)
     status = Column(Integer, default=2)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    notes = Column(String(255), nullable=True)
+    in_stock = Column(Integer, nullable=True)
+    sold = Column(Integer, nullable=True)
+    views = Column(Integer, nullable=True)

@@ -7,4 +7,4 @@ class Like(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    insulation_id = Column(Integer, ForeignKey("insulations.id"), nullable=False)
+    insulation_id = Column(Integer, ForeignKey("thermal_insulations.id"), nullable=False)
