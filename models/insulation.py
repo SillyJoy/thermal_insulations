@@ -1,5 +1,10 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from datetime import UTC, datetime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from db.base import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC).replace(tzinfo=None)
 
 
 class Insulation(Base):
@@ -15,6 +20,6 @@ class Insulation(Base):
     status = Column(Integer, default=2)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     notes = Column(String(255), nullable=True)
-    in_stock = Column(Integer, nullable=True)
-    sold = Column(Integer, nullable=True)
-    views = Column(Integer, nullable=True)
+    created_at = Column(DateTime, nullable=True, default=utc_now)
+    formed_at = Column(DateTime, nullable=True, default=utc_now)
+    warehouse = Column(String(255), nullable=True)
